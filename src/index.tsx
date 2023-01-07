@@ -1,8 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+const firebaseConfig = {
+  apiKey: "AIzaSyDDSQSWvEroy6QBrw69jAqpR7rqO5IyHEE",
+  authDomain: "typechat-a0538.firebaseapp.com",
+  projectId: "typechat-a0538",
+  storageBucket: "typechat-a0538.appspot.com",
+  messagingSenderId: "43657292490",
+  appId: "1:43657292490:web:cc88733052840b6aaf6233",
+  measurementId: "G-NJC7HHHLZ2"
+};
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
