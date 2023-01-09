@@ -1,8 +1,8 @@
 
 import firebase from 'firebase/compat/app';
+import { getStorage, uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyDDSQSWvEroy6QBrw69jAqpR7rqO5IyHEE",
     authDomain: "typechat-a0538.firebaseapp.com",
@@ -17,4 +17,6 @@ const db: firebase.firestore.Firestore = firebaseApp.firestore()
 
 const auth: any = firebase.auth();
 
-export { db, auth }
+const storage = getStorage(firebaseApp);
+
+export { db, auth, storage, uploadBytes, ref, getDownloadURL}
