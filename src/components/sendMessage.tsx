@@ -11,12 +11,12 @@ interface messageNotImg {
   createdAt: any
 }
 
-function SendMessage() {
+function SendMessage({ scroll }: any) {
 
   const [imageUpload, setImageUpload] = useState<any>(null);
   const [msg, setMsg] = useState<string>('')
 
-  function uploadImg(){
+  function uploadImg() {
     const imageRef = ref(storage, `img/${imageUpload.name + Math.floor(Math.random() * 1000) + 1}`);
     const { uid, photoURL, displayName } = auth.currentUser
     const objToUpload: messageNotImg = {
@@ -28,7 +28,7 @@ function SendMessage() {
     }
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url: string) => {
-        db.collection('messages').add({...objToUpload, imageUrl: url,})
+        db.collection('messages').add({ ...objToUpload, imageUrl: url, })
       });
     });
   }
@@ -48,21 +48,26 @@ function SendMessage() {
     else if (msg !== '' && imageUpload !== null) {
       uploadImg()
     }
-    else if (msg === '' && imageUpload !== null){
+    else if (msg === '' && imageUpload !== null) {
       uploadImg()
     }
     setMsg('')
     setImageUpload(Math.floor(Math.random() * 100) + 1)
     setImageUpload(null)
+    scroll()
   }
   function fileItmeChange(evt: any) {
     setImageUpload(evt.target.files[0])
   }
   return (
     <form onSubmit={sendMessage}>
-      <input value={msg} onChange={(evt) => setMsg(evt.target.value)} type="text" />
-      <button type="submit">Submit</button>
-      <input onChange={fileItmeChange} key={imageUpload} type="file" accept="image/png, image/jpeg" />
+      <div>
+        <input className="write" value={msg} onChange={(evt) => setMsg(evt.target.value)} type="text" />
+        <button className="submit" type="submit">💬</button>
+      </div>
+      <div className="file-select" id="src-file1" >
+        <input className="selectFile" name="src-file1" aria-label="Archivo" onChange={fileItmeChange} key={imageUpload} type="file" accept="image/png, image/jpeg" />
+      </div>
     </form>
   );
 }

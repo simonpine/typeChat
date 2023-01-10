@@ -3,7 +3,7 @@ function SignOut() {
 
     return (
       <div>
-        <button onClick={()=> auth.signOut()} >Sign out</button>
+        <button className="sign" onClick={()=> auth.signOut()} >Sign out</button>
       </div>
     );
   }
