@@ -198,6 +198,7 @@ form{
     flex-direction: column;
     & div{
         display: flex;
+        height: 40%;
     }
 }
 .write{
@@ -219,15 +220,11 @@ form{
     border-left: none;
     width: auto;
     border-radius: 0px 20px 20px 0px;
-    padding: 9px 10px;
+    padding: 8px 10px;
+    @media screen and (max-width: 500px) {
+        padding: 0px 5px;
+    }
 }
-// .selectFile{
-//     @extend .write;
-//     border-radius: 20px;
-//     font-size: 15px;
-//     width: auto;
-
-// }
 .file-select {
     margin-top: 5px;
     position: relative;
@@ -262,4 +259,7 @@ form{
   
   #src-file2::before {
     content: 'Seleccionar Archivo 2';
+  }
+  .file-select{
+    height: 30%;
   }
