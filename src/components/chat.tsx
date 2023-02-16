@@ -13,6 +13,9 @@ function Chat() {
   function scroll() {
     dummy.current.scrollIntoView({ behavior: 'smooth' })
   }
+  setTimeout(() => {
+    scroll()
+  }, 1000);
   return (
     <div className="chat" >
 
